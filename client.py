@@ -2,12 +2,11 @@ from socket import *
 from threading import *
 from tkinter import *
 
-clientSocket = socket(AF_INET, SOCK_STREAM)
+clientSocket = socket(AF_INET, SOCK_DGRAM)
 clientSocket.setsockopt(SOL_SOCKET, SO_REUSEADDR, 1)
 
 hostIp = "192.168.100.5"
 portNumber = 8080
-
 clientSocket.connect((hostIp, portNumber))
 
 window = Tk()
@@ -17,7 +16,7 @@ txtMessages = Text(window, width=50)
 txtMessages.grid(row=0, column=0, padx=10, pady=10)
 
 txtYourMessage = Entry(window, width=50)
-txtYourMessage.insert(0,"Mesajul tau")
+txtYourMessage.insert(0,"Mesajul tau :")
 txtYourMessage.grid(row=1, column=0, padx=10, pady=10)
 
 def sendMessage():
